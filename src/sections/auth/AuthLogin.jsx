@@ -65,9 +65,9 @@ export default function AuthLogin({ isDemo = false }) {
         // API FETCH
         onSubmit={async (values, { setErrors, setStatus, setSubmitting }) => {
           try {
-            // const loginUrl = `${API_BASE_URL}/auth/login/`;
+            const loginUrl = ENDPOINT.LOGIN;
 
-            const response = await axios.post(ENDPOINT.LOGIN, {
+            const response = await axios.post(loginUrl, {
               username: values.username,
               password: values.password
             })

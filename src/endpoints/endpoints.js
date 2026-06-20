@@ -7,7 +7,7 @@ export const IMAGE_BASE_URL = 'https://em.fothubtv.com'
 
 export const ENDPOINT = {
     // Authentication
-    LOGIN : `{API_BASE_URL}/auth/login/`,
+    LOGIN : `${API_BASE_URL}/auth/login/`,
     TOKEN_REFRESH : `{API_BASE_URL}/auth/token/refresh/ `,
 
     // Categories
