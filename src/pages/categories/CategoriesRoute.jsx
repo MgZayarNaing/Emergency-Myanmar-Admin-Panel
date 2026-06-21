@@ -18,6 +18,7 @@ const CategoriesRoute = {
       icon: icons.LoginOutlined,
       target: false
     }
+    
   ]
 };
 

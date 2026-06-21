@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react'
 
 import { API_BASE_URL, ENDPOINT, IMAGE_BASE_URL } from '../../../endpoints/endpoints'
-import { Avatar, message, Spin, Table } from 'antd'
+import { Avatar, Button, message, Space, Spin, Table } from 'antd'
 import { flex, width } from '@mui/system'
 import { useNavigate } from 'react-router-dom'
 
@@ -73,8 +73,25 @@ const CategoriesList = () => {
         }
     };
 
+    // const handleDetail = (record) => {
+    //     console.log("Detail Category",record);
+    //     // navigate(`/categories/update/${record.id}`)
+
+    // }
+
+    const handleEdit = (record) => {
+        console.log("Edit Category", record);
+        navigate(`/categories/update/${record.id}`)
+
+    }
+
     // Desgin Table colums
     const colums = [
+        {
+            title: ' ID', dataIndex: 'id', key: 'id', ellipsis: true, render: (text, record) => (
+                <a onClick={() => navigate(`/categories/${record.id}`)} >{text}</a>
+            )
+        },
         {
             title: 'Logo',
             dataIndex: 'logo',
@@ -86,8 +103,24 @@ const CategoriesList = () => {
             width: 100,
 
         },
-        { title: 'Category Name', dataIndex: 'name', key: 'name', sorter: (a, b) => a.name.localeCompare(b.name) },
-        { title: ' ID', dataIndex: 'id', key: 'id', ellipsis: true, }
+        {
+            title: 'Category Name', dataIndex: 'name', key: 'name', sorter: (a, b) => a.name.localeCompare(b.name),
+
+        },
+        {
+            title: ' Action',
+            key: 'action',
+            width: 300,
+            render: (_, record) => (
+                <Space size="middle">
+                    <Button type='link' onClick={() => navigate(`/categories/${record.id}`)}>Detail</Button>
+
+                    <Button type='link' onClick={() => handleEdit(record)}>Edit</Button>
+                    <Button type='link' danger onClick={() => handleDelete(record.id)}>Delete</Button>
+                </Space>
+            )
+        },
+
     ]
 
     if (loading) {

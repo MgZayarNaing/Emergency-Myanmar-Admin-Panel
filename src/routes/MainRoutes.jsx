@@ -8,6 +8,8 @@ import UserCreate from '../pages/user/entry/UserCreate';
 import UserDetail from '../pages/user/view/UserDetail';
 import UserUpdate from '../pages/user/entry/UserUpdate';
 import CategoriesList from '../pages/categories/view/CategoriesList';
+import CategoriesUpdate from '../pages/categories/entry/CategoriesUpdate';
+import CategoriesDetail from '../pages/categories/entry/CategoriesDetail';
 
 // render- Dashboard
 const DashboardDefault = Loadable(lazy(() => import('pages/dashboard/default')));
@@ -52,7 +54,15 @@ const MainRoutes = {
         {
       path: '/categories/list',
       element: <CategoriesList />
-    }
+    },
+        {
+      path: '/categories/update/:id',
+      element: <CategoriesUpdate />
+    },
+        {
+      path: '/categories/:id',
+      element: <CategoriesDetail />
+    },
 
   ]
 };
