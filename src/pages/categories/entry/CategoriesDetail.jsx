@@ -81,7 +81,7 @@ const CategoriesDetail = () => {
 
         } catch (error) {
             console.error("Error Fetch Categories", error);
-            showMessage("Categories not fetch")
+            showMessage("Categories not fetch","error")
         } finally {
             setLoading(false)
         }
@@ -103,7 +103,7 @@ const CategoriesDetail = () => {
         <Box>
             {/* message */}
 
-            <Snackbar>
+            <Snackbar open={snackbar.open} autoHideDuration={4000} onClose={hadleCloseSnackbar}>
                 <Alert onClose={hadleCloseSnackbar} severity={snackbar.severity} variant='filled' sx={{ width: '100%' }}>
                     {snackbar.message}
                 </Alert>
