@@ -15,8 +15,8 @@ export const ENDPOINT = {
         LIST : `{API_BASE_URL}/categories/`,
         CREATE : `{API_BASE_URL}/categories/create/ `,
         DETAIL : (uuid) => `${API_BASE_URL}/categories/${uuid}/`,
-        UPDATE : (uuid) => `{API_BASE_URL}/categories/${uuid}/update/`,
-        DELETE : (uuid) => `{API_BASE_URL}/categories/${uuid}/delete/`,
+        UPDATE : (uuid) => `${API_BASE_URL}/categories/${uuid}/update/`,
+        DELETE : (uuid) => `${API_BASE_URL}/categories/${uuid}/delete/`,
         BULK_DELETE : `{API_BASE_URL}/categories/bulk-delete/`,
     },
 
