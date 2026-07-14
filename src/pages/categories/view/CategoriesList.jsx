@@ -10,6 +10,10 @@ const CategoriesList = () => {
     const [loading, setLoading] = useState(true)
     const navigate = useNavigate();
 
+    const [total, setTotal] = useState(0)
+    const [currentPage, setCurrentPage] = useState(1)
+    const [pageSize, setPageSize] = useState(2)
+
     // message hook
     const [messageApi, contextHolder] = message.useMessage()
 
@@ -25,15 +29,20 @@ const CategoriesList = () => {
             }, 1500);
             return;
         }
-        fetchCategories()
-    }, [])
+        fetchCategories( token,currentPage, pageSize)
+    }, [currentPage,pageSize])
 
-    const fetchCategories = async (token) => {
+    const fetchCategories = async (token, page=1, limit = 10) => {
         try {
             setLoading(true);
+            const offset = (page -  1) * limit
 
             // endpoint
-            const url = ENDPOINT.CATEGORIES.LIST.replace('{API_BASE_URL}', API_BASE_URL)
+            let url = ENDPOINT.CATEGORIES.LIST.replace('{API_BASE_URL}', API_BASE_URL)
+
+            const pag = url.includes('?') ? '&' : '?';
+
+            url = `${url}${pag}limit=${limit}&offset={offset}&page=${page}`
 
             // const response = await fetch(url)
             // if (!response.ok) {
@@ -63,7 +72,15 @@ const CategoriesList = () => {
             }
 
             const data = await response.json()
-            setCategories(data)
+
+            if ( data && data.results && data.results.data){
+                setCategories(data.results.data)
+                setTotal(data.count)
+            } else {
+                setCategories([])
+                setTotal(0)
+            }
+            
         } catch (error) {
             console.error("Error Fetch Categories", error);
             message.error("Categories not fetch")
@@ -158,7 +175,11 @@ const CategoriesList = () => {
 
         },
         {
-            title: 'Category Name', dataIndex: 'name', key: 'name', sorter: (a, b) => a.name.localeCompare(b.name),
+            title: 'Category Name ( EN )', dataIndex: 'name_en', key: 'name_en', sorter: (a, b) => a.name_en.localeCompare(b.name_en),
+
+        },
+        {
+            title: 'Category Name ( MM )', dataIndex: 'name_mm', key: 'name_mm', sorter: (a, b) => a.name_mm.localeCompare(b.name_mm),
 
         },
         {
@@ -204,6 +225,18 @@ const CategoriesList = () => {
                 dataSource={categories}
                 columns={colums}
                 rowKey="id"
+
+                pagination = {{
+                    current:currentPage,
+                    pageSize : pageSize,
+                    total:total,
+                    showSizeChanger: false,
+                    showTotal: (total) => `Total ${total} categories`,
+                    onChange: ( page, size ) => {
+                        setCurrentPage(page);
+                        setPageSize(size)
+                    }
+                }}
 
             />
         </div>

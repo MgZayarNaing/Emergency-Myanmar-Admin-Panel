@@ -1,6 +1,6 @@
 // Base Urls
-export const API_BASE_URL = 'https://em.fothubtv.com/api'
-export const IMAGE_BASE_URL = 'https://em.fothubtv.com'
+export const API_BASE_URL = 'https://emergencymyanmar.fothubtv.com/api'
+export const IMAGE_BASE_URL = 'https://emergencymyanmar.fothubtv.com'
 
 // export const API_BASE_URL = 'http://127.0.0.1:8000/api'
 // export const IMAGE_BASE_URL = 'http://127.0.0.1:8000'
