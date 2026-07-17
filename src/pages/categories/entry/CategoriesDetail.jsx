@@ -77,7 +77,7 @@ const CategoriesDetail = () => {
                 throw new Error('Network response was not ok')
             }
             const data = await response.json();
-            setCategory(data)
+            setCategory(data.data)
 
         } catch (error) {
             console.error("Error Fetch Categories", error);
@@ -144,7 +144,7 @@ const CategoriesDetail = () => {
                             </TableRow>
                             <TableRow>
                                 <TableCell>Category Name</TableCell>
-                                <TableCell>{category?.name}</TableCell>
+                                <TableCell>{category?.name_en}</TableCell>
                             </TableRow>
                             <TableRow>
                                 <TableCell>Category Logo</TableCell>

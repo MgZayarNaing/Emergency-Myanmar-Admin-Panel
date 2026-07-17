@@ -12,8 +12,8 @@ export const ENDPOINT = {
 
     // Categories
     CATEGORIES : {
-        LIST : `{API_BASE_URL}/categories/`,
-        CREATE : `{API_BASE_URL}/categories/create/ `,
+        LIST : `${API_BASE_URL}/categories/`,
+        CREATE : `${API_BASE_URL}/categories/create/ `,
         DETAIL : (uuid) => `${API_BASE_URL}/categories/${uuid}/`,
         UPDATE : (uuid) => `${API_BASE_URL}/categories/${uuid}/update/`,
         DELETE : (uuid) => `${API_BASE_URL}/categories/${uuid}/delete/`,

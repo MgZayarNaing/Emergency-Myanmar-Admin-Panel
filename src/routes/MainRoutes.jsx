@@ -10,6 +10,8 @@ import UserUpdate from '../pages/user/entry/UserUpdate';
 import CategoriesList from '../pages/categories/view/CategoriesList';
 import CategoriesUpdate from '../pages/categories/entry/CategoriesUpdate';
 import CategoriesDetail from '../pages/categories/entry/CategoriesDetail';
+import CategoriesCreate from '../pages/categories/entry/CategoriesCreate';
+import Create from '../pages/categories/entry/Create';
 
 // render- Dashboard
 const DashboardDefault = Loadable(lazy(() => import('pages/dashboard/default')));
@@ -63,6 +65,10 @@ const MainRoutes = {
       path: '/categories/:id',
       element: <CategoriesDetail />
     },
+    {
+      path:'/categories/create/',
+      element:<Create/>
+    }
 
   ]
 };

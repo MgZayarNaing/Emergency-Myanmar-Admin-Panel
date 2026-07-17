@@ -64,7 +64,6 @@ const CategoriesList = () => {
                 messageApi.error("Session Exp, Please Login Try Again !");
                 navigate('/login')
                 return
-
             }
 
             if (!response.ok) {
@@ -118,7 +117,7 @@ const CategoriesList = () => {
             setLoading(true);
 
             let url = ENDPOINT.CATEGORIES.DELETE(id);
-            url = url.repeat('{API_BASE_URL}', API_BASE_URL);
+            //url = url.repeat(`${API_BASE_URL}`, API_BASE_URL);
 
             const response = await fetch(url, {
                 method: 'DELETE',
